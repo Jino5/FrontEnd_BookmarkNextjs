@@ -4,14 +4,15 @@ import Bookmark from './Bookmark';
 import Pagination from './Pagination';
 
 type Props = {
-    bookmarks: BookmarksResponse
+    bookmarks: BookmarksResponse,
+    query?: string
 }
 
-const Bookmarks: React.FC<Props> = ({bookmarks}) => {
+const Bookmarks: React.FC<Props> = ({bookmarks, query}) => {
     return (
         <div>
             <h1>Welcome to Bookmarker</h1>
-            <Pagination bookmarks={bookmarks} />
+            <Pagination bookmarks={bookmarks} query={query}/>
             {
                 bookmarks.data.map(bookmark => <Bookmark key={bookmark.id} bookmark={bookmark} />)
             }
